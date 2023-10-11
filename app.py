@@ -36,3 +36,21 @@ def index():
         
         # salin isi variabel birthdays ke birthdays, lalu kirim ke index.html
         return render_template("index.html", birthdays=birthdays)
+
+# rute untuk edit data, menggunakan parameter <id>
+@app.route("/edit/<id>", methods=["GET", "POST"])
+def edit_data(id):
+    # mencari data sesuai ID, dan render ke edit.html
+    if request.method == "GET":
+       bday = db.execute("SELECT * from birthdays WHERE id = ?", id)[0]
+       print(bday)
+       return render_template("edit.html", bday=bday)   
+    elif request.method == "POST":
+        # baca form untuk mengetahui editan yang di lakukan user
+        bday_name = request.form.get("name") # baca nama dari form
+        bday_month = request.form.get("month") # baca month dari form
+        bday_day = request.form.get("day") # baca day dari form
+        # query untuk eksekusi edit data
+        db.execute('UPDATE birthdays set name = ?, month = ?, day = ? where id = ?', bday_name, bday_month, bday_day, id)
+        # kembali ke halaman home
+        return redirect("/")        

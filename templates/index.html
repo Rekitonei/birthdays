@@ -42,6 +42,7 @@
                             <!-- baris judul kolom atau table heading -->
                             <th>Name</th>
                             <th>Birthdays</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <!-- badan tabel -->
@@ -55,6 +56,9 @@
                             <td>{{ birthday.name }}</td>
                             <!-- menampilkan isi kolom month dan day -->
                             <td>{{ birthday.month }}/{{ birthday.day }}</td>
+                            <td>
+                                <a href="/edit/{{ birthday ['id']}}">Edit</a>
+                            </td>
                         </tr>
                         <!-- akhir dari perulangan -->
                         {% endfor %}
