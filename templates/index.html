@@ -58,6 +58,7 @@
                             <td>{{ birthday.month }}/{{ birthday.day }}</td>
                             <td>
                                 <a href="/edit/{{ birthday ['id']}}">Edit</a>
+                                <a href="/delete/{{ birthday ['id'] }}" onclick="return confirm ('Anda yakin ingin menghapus kenangan ini');">Delete</a>
                             </td>
                         </tr>
                         <!-- akhir dari perulangan -->
